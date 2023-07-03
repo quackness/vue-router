@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import BrazilView from "../views/BrazilView.vue";
 
 const routes = [
   {
@@ -20,7 +19,22 @@ const routes = [
   {
     path: "/brazil",
     name: "brazil",
-    component: BrazilView,
+    component: () => import("@/views/BrazilView.vue"),
+  },
+  {
+    path: "/panama",
+    name: "panama",
+    component: () => import("@/views/PanamaView.vue"),
+  },
+  {
+    path: "/jamaica",
+    name: "jamaica",
+    component: () => import("@/views/JamaicaView.vue"),
+  },
+  {
+    path: "/hawaii",
+    name: "hawaii",
+    component: () => import("@/views/HawaiiView.vue"),
   },
 ];
 
