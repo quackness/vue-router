@@ -42,8 +42,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
-  linkActiveClass: 'vue-school-active-link'
+  routes
 });
 
 export default router;
