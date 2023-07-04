@@ -39,7 +39,7 @@ const routes = [
     component: () => import(/* webpackChunkName:"hawaii"*/ "@/views/HawaiiView.vue"),
   },
   {
-    path: "/vue-router/:id",
+    path: "/destination/:id",
     name: 'destination.show',
     component: () => import("@/views/DestinationShow.vue"),
   },
