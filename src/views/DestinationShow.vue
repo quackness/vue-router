@@ -16,29 +16,27 @@ import { useRoute } from "vue-router";
 import sourceData from "@/data.json";
 
 const route = useRoute();
-const destination = ref(null)
+// const destination = ref(null)
 
 // computed
 const destinationId = computed(() => {
   return parseInt(route.params.id);
 });
 
-// const destination = computed(() => {
-//   return sourceData.destinations.find(
-//     (destination) => destination.id === destinationId.value
-//   );
-// });
+const destination = computed(() => {
+  return sourceData.destinations.find(
+    (destination) => destination.id === destinationId.value
+  );
+});
 
 
-async function setup() {
-    const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
-    console.log(response)
-    destination.value = await response.json()
-}
-setup()
+// async function setup() {
+//     const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
+//     console.log(response)
+//     destination.value = await response.json()
+// }
+// setup()
 
-// watch(()=>route.params, async() => {  const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
-//     destination.value = await response.json()} )
 
 
 // async function initData() {
