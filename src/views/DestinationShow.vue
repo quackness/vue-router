@@ -11,18 +11,17 @@
 //in vue dev tools go to router view and inspect the params 
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import sourceData from "@/data.json";
-
 
 const route = useRoute();
 const destination = ref(null)
 
 // computed
-const destinationId = computed(() => {
-  return parseInt(route.params.id);
-});
+// const destinationId = computed(() => {
+//   return parseInt(route.params.id);
+// });
 
 // const destination = computed(() => {
 //   return sourceData.destinations.find(
@@ -30,12 +29,21 @@ const destinationId = computed(() => {
 //   );
 // });
 
+async function initData() {
+      const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
+      console.log(response)
+      destination.value = await response.json()
+}
+
 async function setup() {
-    const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
-    console.log(response)
-    destination.value = await response.json()
+    // const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
+    // console.log(response)
+    // destination.value = await response.json()
+    initData();
 }
 setup()
+
+watch(()=>route.params, initData() );
 
 
 // async function initData() {
