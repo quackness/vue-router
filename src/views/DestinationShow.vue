@@ -19,7 +19,7 @@ const route = useRoute();
 // const destination = ref(null)
 
 const props = defineProps({
-  id: { type: String, required: true },
+  id: { type: Number, required: true },
 })
 
 // computed
@@ -29,7 +29,7 @@ const destinationId = computed(() => {
 
 const destination = computed(() => {
   return sourceData.destinations.find(
-    (destination) => destination.id === parseInt(props.id)
+    (destination) => destination.id === props.id
   );
 });
 
