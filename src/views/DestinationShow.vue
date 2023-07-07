@@ -29,21 +29,18 @@ const destination = ref(null)
 //   );
 // });
 
-async function initData() {
-      const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
-      console.log(response)
-      destination.value = await response.json()
-}
+
 
 async function setup() {
-    // const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
-    // console.log(response)
-    // destination.value = await response.json()
-    initData();
+    const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
+    console.log(response)
+    destination.value = await response.json()
 }
 setup()
 
-watch(()=>route.params, initData() );
+watch(()=>route.params, async() => {  const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
+    console.log(response)
+    destination.value = await response.json()} )
 
 
 // async function initData() {
