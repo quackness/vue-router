@@ -18,6 +18,10 @@ import sourceData from "@/data.json";
 const route = useRoute();
 // const destination = ref(null)
 
+const props = defineProps({
+  id: { type: String, required: true },
+})
+
 // computed
 const destinationId = computed(() => {
   return parseInt(route.params.id);
@@ -25,7 +29,7 @@ const destinationId = computed(() => {
 
 const destination = computed(() => {
   return sourceData.destinations.find(
-    (destination) => destination.id === destinationId.value
+    (destination) => destination.id === parseInt(props.id)
   );
 });
 
