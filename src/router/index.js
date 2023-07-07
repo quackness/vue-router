@@ -13,7 +13,9 @@ const routes = [
     path: "/destination/:id/:slug",
     name: 'destination.show',
     component: () => import("@/views/DestinationShow.vue"),
-    props: true,
+    props: {
+      newsletterPopup: false,
+    },
   },
 ];
 
