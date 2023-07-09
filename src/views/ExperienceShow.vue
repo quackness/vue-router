@@ -20,13 +20,14 @@ console.log("props", props.experienceSlug);
 console.log("props", props.id);
 
 const destination = computed(() => {
-  console.log(sourceData);
-  return sourceData?.destinations?.find(
+  console.log("+", sourceData);
+  console.log(">>", sourceData.destinations);
+  return sourceData.destinations.find(
     (destination) => destination.id === props.id
   );
 });
-console.log("log", destination);
-
+console.log("log>", destination);
+//remember about .value!!!
 const experience = computed(() => {
   console.log("destination", destination);
   console.log("props", props.experienceSlug);
