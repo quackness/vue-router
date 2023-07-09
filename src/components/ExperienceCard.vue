@@ -6,6 +6,6 @@
 </template>
 <script setup>
 const props = defineProps({
-  experience: { type: Object, required: true },
+  experience: { type: Object, required: false },
 });
 </script>
