@@ -6,6 +6,16 @@
       <p>{{ destination.description }}</p>
     </div>
   </section>
+  <section class="experiences">
+    <h2>Top experiences in {{ destination.name }}</h2>
+    <div class="cards">
+      <ExperienceCard
+        v-for="experience in destination.experiences"
+        :key="experience.slug"
+        :experience="experience"
+      />
+    </div>
+  </section>
 </template>
 
 //in vue dev tools go to router view and inspect the params 
@@ -14,13 +24,14 @@
 import { computed, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import sourceData from "@/data.json";
+import ExperienceCard from "@/components/ExperienceCard.vue";
 
 const route = useRoute();
 // const destination = ref(null)
 
 const props = defineProps({
   id: { type: Number, required: true },
-})
+});
 
 // computed
 const destinationId = computed(() => {
@@ -33,7 +44,6 @@ const destination = computed(() => {
   );
 });
 
-
 // async function setup() {
 //     const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}.json`)
 //     console.log(response)
@@ -41,13 +51,10 @@ const destination = computed(() => {
 // }
 // setup()
 
-
-
 // async function initData() {
 //      const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}`)
 //       destination.value  = await response.json()
 // }
-
 </script>
 
 //use parseInt to cast it into a number, all params coming from the url are strings
