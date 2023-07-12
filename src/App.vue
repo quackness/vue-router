@@ -2,7 +2,7 @@
   <TheNavigation />
   <div class="container">
       <router-view v-slot="{Component}">
-        <transition name="slide" mode="out-in">
+        <transition name="fade" mode="out-in">
             <component :is="Component" :key="$route.path"></component>
         </transition>
       </router-view>
@@ -14,14 +14,13 @@ import TheNavigation from "@/components/TheNavigation.vue";
 </script>
 <style>
 
-.slide-enter-active,
-.slide-leve-active{
-    transition: opacity 1s, transform 1s;
+.fade-enter-active,
+.fade-leve-active{
+    transition: opacity 0.3s;
 }
-.slide-enter-from,
-.slide-leave-to {
+.fade-enter,
+.fade-leave-to {
     opacity:0;
-    transform: translateX(-30%);
 }
 </style>
 
