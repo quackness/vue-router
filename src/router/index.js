@@ -28,6 +28,11 @@ const routes = [
         }),
       },
     ]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'Not Found',
+    component: () => import("@/views/NotFound.vue"),
   }
 ];
 
